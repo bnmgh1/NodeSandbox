@@ -77,9 +77,17 @@ cbb_wf = {
     setNative: function (func, func_name) {
         map.set(func, `function ${func_name || func.name || ''}() { [native code] }`);
     },
+    deleteProperty(obj, name) {
+        my_api.defineProperty(obj, name, { value: 0, mode: 0 });
+        delete obj[name];
+    },
+    runLoop() {
+        // 我只把5ms以内的异步任务执行完...
+        deasync.sleep(5);
+    },
     event_get_isTrusted(){
         // 非法调用
-        let r = cbb_wf.checkIllegal(this, "Option");
+        let r = cbb_wf.checkIllegal(this, "Event");
         let ctx = r[0];
         if (r[1]) {
             // 报错
