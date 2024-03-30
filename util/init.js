@@ -15432,7 +15432,116 @@ cbb_wf.console.time("js 构造函数初始化");
         }
         return result;
     }
-})()
+})();
+// EventTarget
+!(function(){
+    my_api.EventTarget_addEventListener = function (type, callback) {
+        // callback是回调函数, 若已经添加过, 不会重复触发这个回调函数
+        let r = cbb_wf.checkIllegal(this, "EventTarget");
+        let ctx = r[0];
+        if (r[1]) {
+          throw cbb_wf.newError.call(ctx, "Illegal invocation");
+        }
+        if (arguments.length > 2 && arguments[2]) {
+          let descriptor = Object.getOwnPropertyDescriptors(arguments[2]);
+
+          for (let key in descriptor) {
+            arguments[2][key];
+          }
+        }
+
+        let listener = cbb_wf.getValue(this, "listener");
+
+        if (listener == undefined) {
+          listener = {};
+          listener[type] = [callback];
+          cbb_wf.setValue(this, "listener", listener);
+
+        } else if (listener[type] == undefined) {
+          listener[type] = [callback];
+        } else listener[type].push(callback);
+
+
+        if (cbb_wf.is_log) {
+          cbb_wf.console.log('[*]  EventTarget_addEventListener, type => ', type, ", callback => ", callback
+          //  && callback.toString().replaceAll("\r\n", "").replaceAll("  ", "").slice(0, 70) || callback
+           , ", this => ", '' + this);
+        }
+      };
+
+      my_api.EventTarget_dispatchEvent = function (event) {
+        let r = cbb_wf.checkIllegal(this, "EventTarget");
+        let ctx = r[0];
+        if (r[1]) {
+          throw cbb_wf.newError.call(ctx, "Illegal invocation");
+        }
+        if (cbb_wf.getValue(event, "is_used")) {
+          cbb_wf.setValue(event, "isTrusted", false);
+        }
+        let result = true;
+        let type = cbb_wf.getValue(event, "type");
+        let listener = cbb_wf.getValue(this, "listener");
+
+        if (listener === undefined) {
+          // 没有添加事件
+          cbb_wf.is_log && cbb_wf.console.log('[*]  EventTarget_dispatchEvent, 该对象没有监听事件, this =>', toString.call(this), ", type => ", type);
+          return result;
+        } else if (listener[type] === undefined) {
+          // 没有找到对应类型的回调函数
+          cbb_wf.console.log('[*]  EventTarget_dispatchEvent, 没有找到对应类型的回调函数, this =>', toString.call(this), ", type => ", type);
+          return result;
+        } else {
+          listener[type].map(callback => {
+            cbb_wf.setValue(ctx, "event", event);
+            cbb_wf.setValue(event, "currentTarget", this);
+            callback.call(this, event);
+            cbb_wf.setValue(ctx, "event", undefined);
+          });
+        }
+
+        cbb_wf.setValue(event, "is_used", true);
+        if (cbb_wf.is_log) {
+          cbb_wf.console.log('[*]  EventTarget_dispatchEvent, result => ', '' + result, ", event => ", event, ', type => ', type, ", this => ", '' + this);
+        }
+
+        return result;
+      };
+
+      my_api.EventTarget_removeEventListener = function (type, callback) {
+        let r = cbb_wf.checkIllegal(this, "EventTarget");
+        let ctx = r[0];
+        if (r[1]) {
+          throw cbb_wf.newError.call(ctx, "Illegal invocation");
+        }
+
+        let listener = cbb_wf.getValue(this, "listener");
+
+        if (listener === undefined) {
+          // 没有添加事件
+          // cbb_wf.console.log('[*]  EventTarget_removeEventListener, 该对象没有监听事件');
+        } else {
+          if (listener[type] === undefined) {
+            // 没有找到对应类型的回调函数
+            cbb_wf.console.log('[*]  EventTarget_removeEventListener, 没有找到对应类型的回调函数, this =>', toString.call(this), ", type => ", type);
+          } else {
+            let stack = listener[type];
+
+            for (let i = 0, l = stack.length; i < l; i++) {
+              if (stack[i] === callback) {
+                stack.splice(i, 1);
+                break;
+              }
+            }
+          }
+        }
+
+        if (cbb_wf.is_log) {
+          cbb_wf.console.log('[*]  EventTarget_removeEventListener, type => ', type, ", callback => ", callback, ", this => ", '' + this);
+        }
+      };
+
+})();
+
 my_api.initProto();
 my_api.initWindow.call(this, dom_window);
 my_api.passCheck.call(this);
