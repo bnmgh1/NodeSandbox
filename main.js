@@ -128,7 +128,9 @@ global.ctr = {};
     for (let c of func) {
         this[c] = function () { }
     }
-
+    this.Audio.prototype = this.HTMLAudioElement.prototype;
+    this.Image.prototype = this.HTMLImageElement.prototype;
+    this.Option.prototype = this.HTMLOptionElement.prototype;
     this.XMLHttpRequestUpload.__proto__ = this.XMLHttpRequestEventTarget;
     this.XMLHttpRequestUpload.prototype.__proto__ = this.XMLHttpRequestEventTarget.prototype; this.XMLHttpRequestEventTarget.__proto__ = this.EventTarget;
     this.XMLHttpRequestEventTarget.prototype.__proto__ = this.EventTarget.prototype; this.XMLHttpRequest.__proto__ = this.XMLHttpRequestEventTarget;
