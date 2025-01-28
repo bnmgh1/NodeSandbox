@@ -1,13 +1,12 @@
-this.location_valueOf = function () {
+this.location_valueOf = function (val) {
     let r = cbb_wf.checkIllegal(this, "Location");
     let ctx = r[0];
     if (r[1]) {
-        // 报错
-        throw cbb_wf.newError.call(ctx, "Illegal invocation");
+        throw new TypeError("Illegal invocation");
     }
     let result;
     if (cbb_wf.is_log) {
-        cbb_wf.console.log("[*]  location_valueOf, this =>", toString.call(this), ", arguments => ", arguments, ", result => ", result + '', ".暂未实现");
+        cbb_wf.console.log('[*]  location_valueOf, 暂时未实现功能');
     }
     return result;
 }
@@ -15,12 +14,11 @@ this.location_get_ancestorOrigins = function () {
     let r = cbb_wf.checkIllegal(this, "Location");
     let ctx = r[0];
     if (r[1]) {
-        // 报错
-        throw cbb_wf.newError.call(ctx, "Illegal invocation");
+        throw new TypeError("Illegal invocation");
     }
-    let result = cbb_wf.getValue(this, "ancestorOrigins");
+    let result = cbb_wf.getValue(this, 'ancestorOrigins');
     if (cbb_wf.is_log) {
-        cbb_wf.console.log("[*]  location_get_ancestorOrigins, this =>", toString.call(this), ", result => ", result + '');
+        cbb_wf.console.log('[*]  location_get_ancestorOrigins, result => ', '' + result);
     }
     return result;
 }
@@ -28,12 +26,11 @@ this.location_get_href = function () {
     let r = cbb_wf.checkIllegal(this, "Location");
     let ctx = r[0];
     if (r[1]) {
-        // 报错
-        throw cbb_wf.newError.call(ctx, "Illegal invocation");
+        throw new TypeError("Illegal invocation");
     }
-    let result = cbb_wf.getValue(this, "href");
+    let result = ctx.String(cbb_wf.getValue(this, 'dom_element').href);
     if (cbb_wf.is_log) {
-        cbb_wf.console.log("[*]  location_get_href, this =>", toString.call(this), ", result => ", result + '');
+        cbb_wf.console.log('[*]  location_get_href, result => ', '' + result);
     }
     return result;
 }
@@ -41,25 +38,22 @@ this.location_set_href = function (val) {
     let r = cbb_wf.checkIllegal(this, "Location");
     let ctx = r[0];
     if (r[1]) {
-        // 报错
-        throw cbb_wf.newError.call(ctx, "Illegal invocation");
+        throw new TypeError("Illegal invocation");
     }
-    let result = cbb_wf.setValue(this, "href", val);
+    cbb_wf.getValue(this, 'dom_element').href = val;
     if (cbb_wf.is_log) {
-        cbb_wf.console.log("[*]  location_set_href, this =>", toString.call(this), ", val => ", val + '');
+        cbb_wf.console.log('[*]  location_set_href, 传参val => ' + val);
     }
-    return result;
 }
 this.location_get_origin = function () {
     let r = cbb_wf.checkIllegal(this, "Location");
     let ctx = r[0];
     if (r[1]) {
-        // 报错
-        throw cbb_wf.newError.call(ctx, "Illegal invocation");
+        throw new TypeError("Illegal invocation");
     }
-    let result = cbb_wf.getValue(this, "origin");
+    let result = ctx.String(cbb_wf.getValue(this, 'dom_element').origin);
     if (cbb_wf.is_log) {
-        cbb_wf.console.log("[*]  location_get_origin, this =>", toString.call(this), ", result => ", result + '');
+        cbb_wf.console.log('[*]  location_get_origin, result => ', '' + result);
     }
     return result;
 }
@@ -67,12 +61,11 @@ this.location_get_protocol = function () {
     let r = cbb_wf.checkIllegal(this, "Location");
     let ctx = r[0];
     if (r[1]) {
-        // 报错
-        throw cbb_wf.newError.call(ctx, "Illegal invocation");
+        throw new TypeError("Illegal invocation");
     }
-    let result = cbb_wf.getValue(this, "protocol");
+    let result = ctx.String(cbb_wf.getValue(this, 'dom_element').protocol);
     if (cbb_wf.is_log) {
-        cbb_wf.console.log("[*]  location_get_protocol, this =>", toString.call(this), ", result => ", result + '');
+        cbb_wf.console.log('[*]  location_get_protocol, result => ', '' + result);
     }
     return result;
 }
@@ -80,25 +73,22 @@ this.location_set_protocol = function (val) {
     let r = cbb_wf.checkIllegal(this, "Location");
     let ctx = r[0];
     if (r[1]) {
-        // 报错
-        throw cbb_wf.newError.call(ctx, "Illegal invocation");
+        throw new TypeError("Illegal invocation");
     }
-    let result = cbb_wf.setValue(this, "protocol", val);
+    cbb_wf.getValue(this, 'dom_element').protocol = val;
     if (cbb_wf.is_log) {
-        cbb_wf.console.log("[*]  location_set_protocol, this =>", toString.call(this), ", val => ", val + '');
+        cbb_wf.console.log('[*]  location_set_protocol, 传参val => ' + val);
     }
-    return result;
 }
 this.location_get_host = function () {
     let r = cbb_wf.checkIllegal(this, "Location");
     let ctx = r[0];
     if (r[1]) {
-        // 报错
-        throw cbb_wf.newError.call(ctx, "Illegal invocation");
+        throw new TypeError("Illegal invocation");
     }
-    let result = cbb_wf.getValue(this, "host");
+    let result = ctx.String(cbb_wf.getValue(this, 'dom_element').host);
     if (cbb_wf.is_log) {
-        cbb_wf.console.log("[*]  location_get_host, this =>", toString.call(this), ", result => ", result + '');
+        cbb_wf.console.log('[*]  location_get_host, result => ', '' + result);
     }
     return result;
 }
@@ -106,25 +96,22 @@ this.location_set_host = function (val) {
     let r = cbb_wf.checkIllegal(this, "Location");
     let ctx = r[0];
     if (r[1]) {
-        // 报错
-        throw cbb_wf.newError.call(ctx, "Illegal invocation");
+        throw new TypeError("Illegal invocation");
     }
-    let result = cbb_wf.setValue(this, "host", val);
+    cbb_wf.getValue(this, 'dom_element').host = val;
     if (cbb_wf.is_log) {
-        cbb_wf.console.log("[*]  location_set_host, this =>", toString.call(this), ", val => ", val + '');
+        cbb_wf.console.log('[*]  location_set_host, 传参val => ' + val);
     }
-    return result;
 }
 this.location_get_hostname = function () {
     let r = cbb_wf.checkIllegal(this, "Location");
     let ctx = r[0];
     if (r[1]) {
-        // 报错
-        throw cbb_wf.newError.call(ctx, "Illegal invocation");
+        throw new TypeError("Illegal invocation");
     }
-    let result = cbb_wf.getValue(this, "hostname");
+    let result = ctx.String(cbb_wf.getValue(this, 'dom_element').hostname);
     if (cbb_wf.is_log) {
-        cbb_wf.console.log("[*]  location_get_hostname, this =>", toString.call(this), ", result => ", result + '');
+        cbb_wf.console.log('[*]  location_get_hostname, result => ', '' + result);
     }
     return result;
 }
@@ -132,25 +119,22 @@ this.location_set_hostname = function (val) {
     let r = cbb_wf.checkIllegal(this, "Location");
     let ctx = r[0];
     if (r[1]) {
-        // 报错
-        throw cbb_wf.newError.call(ctx, "Illegal invocation");
+        throw new TypeError("Illegal invocation");
     }
-    let result = cbb_wf.setValue(this, "hostname", val);
+    cbb_wf.getValue(this, 'dom_element').hostname = val;
     if (cbb_wf.is_log) {
-        cbb_wf.console.log("[*]  location_set_hostname, this =>", toString.call(this), ", val => ", val + '');
+        cbb_wf.console.log('[*]  location_set_hostname, 传参val => ' + val);
     }
-    return result;
 }
 this.location_get_port = function () {
     let r = cbb_wf.checkIllegal(this, "Location");
     let ctx = r[0];
     if (r[1]) {
-        // 报错
-        throw cbb_wf.newError.call(ctx, "Illegal invocation");
+        throw new TypeError("Illegal invocation");
     }
-    let result = cbb_wf.getValue(this, "port");
+    let result = ctx.String(cbb_wf.getValue(this, 'dom_element').port);
     if (cbb_wf.is_log) {
-        cbb_wf.console.log("[*]  location_get_port, this =>", toString.call(this), ", result => ", result + '');
+        cbb_wf.console.log('[*]  location_get_port, result => ', '' + result);
     }
     return result;
 }
@@ -158,25 +142,22 @@ this.location_set_port = function (val) {
     let r = cbb_wf.checkIllegal(this, "Location");
     let ctx = r[0];
     if (r[1]) {
-        // 报错
-        throw cbb_wf.newError.call(ctx, "Illegal invocation");
+        throw new TypeError("Illegal invocation");
     }
-    let result = cbb_wf.setValue(this, "port", val);
+    cbb_wf.getValue(this, 'dom_element').port = val;
     if (cbb_wf.is_log) {
-        cbb_wf.console.log("[*]  location_set_port, this =>", toString.call(this), ", val => ", val + '');
+        cbb_wf.console.log('[*]  location_set_port, 传参val => ' + val);
     }
-    return result;
 }
 this.location_get_pathname = function () {
     let r = cbb_wf.checkIllegal(this, "Location");
     let ctx = r[0];
     if (r[1]) {
-        // 报错
-        throw cbb_wf.newError.call(ctx, "Illegal invocation");
+        throw new TypeError("Illegal invocation");
     }
-    let result = cbb_wf.getValue(this, "pathname");
+    let result = ctx.String(cbb_wf.getValue(this, 'dom_element').pathname);
     if (cbb_wf.is_log) {
-        cbb_wf.console.log("[*]  location_get_pathname, this =>", toString.call(this), ", result => ", result + '');
+        cbb_wf.console.log('[*]  location_get_pathname, result => ', '' + result);
     }
     return result;
 }
@@ -184,25 +165,22 @@ this.location_set_pathname = function (val) {
     let r = cbb_wf.checkIllegal(this, "Location");
     let ctx = r[0];
     if (r[1]) {
-        // 报错
-        throw cbb_wf.newError.call(ctx, "Illegal invocation");
+        throw new TypeError("Illegal invocation");
     }
-    let result = cbb_wf.setValue(this, "pathname", val);
+    cbb_wf.getValue(this, 'dom_element').pathname = val;
     if (cbb_wf.is_log) {
-        cbb_wf.console.log("[*]  location_set_pathname, this =>", toString.call(this), ", val => ", val + '');
+        cbb_wf.console.log('[*]  location_set_pathname, 传参val => ' + val);
     }
-    return result;
 }
 this.location_get_search = function () {
     let r = cbb_wf.checkIllegal(this, "Location");
     let ctx = r[0];
     if (r[1]) {
-        // 报错
-        throw cbb_wf.newError.call(ctx, "Illegal invocation");
+        throw new TypeError("Illegal invocation");
     }
-    let result = cbb_wf.getValue(this, "search");
+    let result = ctx.String(cbb_wf.getValue(this, 'dom_element').search);
     if (cbb_wf.is_log) {
-        cbb_wf.console.log("[*]  location_get_search, this =>", toString.call(this), ", result => ", result + '');
+        cbb_wf.console.log('[*]  location_get_search, result => ', '' + result);
     }
     return result;
 }
@@ -210,25 +188,22 @@ this.location_set_search = function (val) {
     let r = cbb_wf.checkIllegal(this, "Location");
     let ctx = r[0];
     if (r[1]) {
-        // 报错
-        throw cbb_wf.newError.call(ctx, "Illegal invocation");
+        throw new TypeError("Illegal invocation");
     }
-    let result = cbb_wf.setValue(this, "search", val);
+    cbb_wf.getValue(this, 'dom_element').search = val;
     if (cbb_wf.is_log) {
-        cbb_wf.console.log("[*]  location_set_search, this =>", toString.call(this), ", val => ", val + '');
+        cbb_wf.console.log('[*]  location_set_search, 传参val => ' + val);
     }
-    return result;
 }
 this.location_get_hash = function () {
     let r = cbb_wf.checkIllegal(this, "Location");
     let ctx = r[0];
     if (r[1]) {
-        // 报错
-        throw cbb_wf.newError.call(ctx, "Illegal invocation");
+        throw new TypeError("Illegal invocation");
     }
-    let result = cbb_wf.getValue(this, "hash");
+    let result = ctx.String(cbb_wf.getValue(this, 'dom_element').hash);
     if (cbb_wf.is_log) {
-        cbb_wf.console.log("[*]  location_get_hash, this =>", toString.call(this), ", result => ", result + '');
+        cbb_wf.console.log('[*]  location_get_hash, result => ', '' + result);
     }
     return result;
 }
@@ -236,64 +211,59 @@ this.location_set_hash = function (val) {
     let r = cbb_wf.checkIllegal(this, "Location");
     let ctx = r[0];
     if (r[1]) {
-        // 报错
-        throw cbb_wf.newError.call(ctx, "Illegal invocation");
+        throw new TypeError("Illegal invocation");
     }
-    let result = cbb_wf.setValue(this, "hash", val);
+    cbb_wf.getValue(this, 'dom_element').hash = val;
     if (cbb_wf.is_log) {
-        cbb_wf.console.log("[*]  location_set_hash, this =>", toString.call(this), ", val => ", val + '');
+        cbb_wf.console.log('[*]  location_set_hash, 传参val => ' + val);
     }
-    return result;
 }
-this.location_assign = function () {
+this.location_assign = function (val) {
     let r = cbb_wf.checkIllegal(this, "Location");
     let ctx = r[0];
     if (r[1]) {
-        // 报错
-        throw cbb_wf.newError.call(ctx, "Illegal invocation");
+        throw new TypeError("Illegal invocation");
     }
     let result;
     if (cbb_wf.is_log) {
-        cbb_wf.console.log("[*]  location_assign, this =>", toString.call(this), ", arguments => ", arguments, ", result => ", result + '', ".暂未实现");
+        cbb_wf.console.log('[*]  location_assign, 暂时未实现功能');
     }
     return result;
 }
-this.location_reload = function () {
+this.location_reload = function (val) {
     let r = cbb_wf.checkIllegal(this, "Location");
     let ctx = r[0];
     if (r[1]) {
-        // 报错
-        throw cbb_wf.newError.call(ctx, "Illegal invocation");
+        throw new TypeError("Illegal invocation");
     }
     let result;
+    ctx.my_api.is_close = true;
     if (cbb_wf.is_log) {
-        cbb_wf.console.log("[*]  location_reload, this =>", toString.call(this), ", arguments => ", arguments, ", result => ", result + '', ".暂未实现");
+        cbb_wf.console.log('[*]  location_reload, 暂时未实现功能');
     }
     return result;
 }
-this.location_replace = function () {
+this.location_replace = function (val) {
     let r = cbb_wf.checkIllegal(this, "Location");
     let ctx = r[0];
     if (r[1]) {
-        // 报错
-        throw cbb_wf.newError.call(ctx, "Illegal invocation");
+        throw new TypeError("Illegal invocation");
     }
     let result;
     if (cbb_wf.is_log) {
-        cbb_wf.console.log("[*]  location_replace, this =>", toString.call(this), ", arguments => ", arguments, ", result => ", result + '', ".暂未实现");
+        cbb_wf.console.log('[*]  location_replace, 暂时未实现功能');
     }
     return result;
 }
-this.location_toString = function () {
+this.location_toString = function (val) {
     let r = cbb_wf.checkIllegal(this, "Location");
     let ctx = r[0];
     if (r[1]) {
-        // 报错
-        throw cbb_wf.newError.call(ctx, "Illegal invocation");
+        throw new TypeError("Illegal invocation");
     }
-    let result;
+    let result = ctx.String(cbb_wf.getValue(this, 'dom_element').href);
     if (cbb_wf.is_log) {
-        cbb_wf.console.log("[*]  location_toString, this =>", toString.call(this), ", arguments => ", arguments, ", result => ", result + '', ".暂未实现");
+        cbb_wf.console.log('[*]  location_toString, result =>', result);
     }
     return result;
 }
